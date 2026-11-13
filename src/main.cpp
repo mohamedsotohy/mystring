@@ -4,11 +4,11 @@
 using namespace std;
 
 int main() {
-  char myword[] = "aaaa";
-  char myword2[] = "aAaa";
-  char myword3[] = "";
-  char myword4[] = "zzZZ";
-  char myword5[] = "ZZAARY";
+  const char* myword = "aaaa";
+  const char* myword2 = "aAaa";
+  const char* myword3 = "";
+  const char* myword4 = "zzZZ";
+  const char* myword5 = "ZZAARY";
 
   // toUpper(myword,);
   // makeUpper(myword);
@@ -33,8 +33,8 @@ int main() {
   // cout << strCmp(myword2, myword3) << endl;
   // cout << strCmp(myword4, myword4) << endl;
 
-  stringCopy(myword, myword4);
-  cout << myword4;
+  stringCopy(myword, &myword2);
+  cout << myword2 << std::endl;
 
   return 0;
 }

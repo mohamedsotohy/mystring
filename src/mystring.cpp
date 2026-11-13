@@ -6,7 +6,7 @@
 
 // #include <iostream>
 
-int getlength(char* word) {
+int getLength(const char* word) {
   int count = 0;
   while (word[count] != '\0') count++;
 
@@ -23,24 +23,29 @@ void makeUpper(char* word) {
 
 void makeLower(char* word) {  // cant edit in place
   int i = 0;
+
   while (word[i] != '\0') {
     if (word[i] <= 90 && word[i] >= 65) word[i] += 32;
     i++;
   }
 }
 
-bool strCmp(char* word1, char* word2) {
-  if (getlength(word1) != getlength(word2)) return false;
-  for (int i = 0; i < getlength(word1); i++) {
+bool strCmp(const char* word1, const char* word2) {
+  const int LENGTH = getLength(word1);
+  if (LENGTH != getLength(word2)) return false;
+  for (int i = 0; i < LENGTH; i++) {
     if (word1[i] != word2[i]) return false;
   }
 
   return true;
 }
 
-void stringCopy(char* src, char* dest) {
-  if (getlength(src) != getlength(dest)) return;
-  for (int i = 0; i < getlength(src) && src[i] != '\0'; i++) {
-    dest[i] = src[i];
+void stringCopy(const char* src, const char** dest) {
+  int size = getLength(src);
+  char* temp = new char[size + 1];
+  for (int i = 0; i < size; i++) {
+    temp[i] = src[i];
   }
+  temp[size] = '\0';
+  *dest = temp;
 }
